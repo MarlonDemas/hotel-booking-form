@@ -9,7 +9,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <style>
             .section {
-                background-image: url("pexels-photo-573552.jpeg");
+                background-image: url("css/pexels-photo-573552.jpeg");
                 background-size: cover;
                 background-repeat: no-repeat;
                 height: 100vh;
