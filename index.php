@@ -1,3 +1,15 @@
+<?php
+    require_once "connect.php";
+
+    $sql = " CREATE TABLE IF NOT EXISTS hotel (
+             id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+             GuestName VARCHAR(128),
+             HotelName VARCHAR(128),
+             NumDays INT";
+
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +21,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <style>
             .section {
-                background-image: url("css/pexels-photo-573552.jpeg");
+                background-image: url("img/pexels-photo-573552.jpeg");
                 background-size: cover;
                 background-repeat: no-repeat;
                 height: 100vh;
