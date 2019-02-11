@@ -1,3 +1,15 @@
+<?php
+    require_once "connect.php";
+
+    $sql = " CREATE TABLE IF NOT EXISTS hotel (
+             id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+             GuestName VARCHAR(128),
+             HotelName VARCHAR(128),
+             NumDays INT";
+
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
