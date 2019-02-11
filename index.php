@@ -9,16 +9,13 @@
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <style>
             .section {
-                background-image: url("css/pexels-photo-573552.jpeg");
+                background-image: url("img/pexels-photo-573552.jpeg");
                 background-size: cover;
                 background-repeat: no-repeat;
                 height: 100vh;
             }
             hr {
                 background-color: transparent;
-            }
-            .field {
-                padding-bottom: 30px;
             }
             .container .columns .column .box {
                 background-color: rgba(0,0,0,0.5);
