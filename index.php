@@ -23,7 +23,7 @@
         $date1 = $_POST['date1'];
         $date2 = $_POST['date2'];
 
-        $sql = "INSERT INTO hotel(Name, Surname, HotelName, NumDays) VALUES ('$name','$surname','$hotel','$date1','$date2')";
+        $sql = "INSERT INTO hotel(Name, Surname, HotelName, arriveDate, departDate) VALUES ('$name','$surname','$hotel','$date1','$date2')";
 
         if ($db_server->query($sql)) {
         } else {
@@ -61,28 +61,33 @@
             ::placeholder {
                 color: black !important;
             }
+            .second, .third {
+                display: none;
+            }
         </style>
 </head>
 
-<body>
+<body id="body">
     <section class="section">
-        <h2 class="title is-2 has-text-white" style="margin-left: 5%">Hotel BookINN</h2>
         <div class="container">
             <div class="columns">
                 <div class="column is-half">
                     <div class="box">
-                        <form action="index.php" method="post" class="form">
+                        <h2 class="title is-2 has-text-white"><u>Hotel BookINN</u></h2>
+                        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="form">
                             <div class="field">
                                 <label class="label has-text-white">Name</label>
                                 <p class="control">
-                                    <input class="input" type="text" name="name" placeholder="Please enter your name">
+                                    <input class="input" value="<?php if (isset($_POST['submit'])){echo $name;} ?>"
+                                        type="text" name="name" placeholder="Please enter your name">
                                 </p>
                             </div>
 
                             <div class="field">
                                 <label class="label has-text-white">Surname</label>
                                 <p class="control">
-                                    <input class="input" type="text" name="surname" placeholder="Please enter your surname">
+                                    <input class="input" value="<?php if (isset($_POST['submit'])){echo $surname;} ?>"
+                                        type="text" name="surname" placeholder="Please enter your surname">
                                 </p>
                             </div>
 
@@ -90,7 +95,7 @@
                                 <label class="label has-text-white">Select your hotel</label>
                                 <p class="control">
                                     <span class="select">
-                                        <select name="hotelname">
+                                        <select id="dropdown" name="hotelname">
                                             <option value="Hotel 1">Hotel 1</option>
                                             <option value="Hotel 2">Hotel 2</option>
                                             <option value="Hotel 3">Hotel 3</option>
@@ -102,14 +107,16 @@
                             <div class="field">
                                 <label class="label has-text-white">Check-in Date</label>
                                 <p class="control">
-                                    <input class="input" name="date1" type="date" placeholder="e.g 3">
+                                    <input value="<?php if (isset($_POST['submit'])){echo $date1;} ?>" class="input"
+                                        name="date1" type="date" placeholder="e.g 3">
                                 </p>
                             </div>
-                            
+
                             <div class="field">
                                 <label class="label has-text-white">Check-out Date</label>
                                 <p class="control">
-                                    <input class="input" name="date2" type="date" placeholder="e.g 3">
+                                    <input value="<?php if (isset($_POST['submit'])){echo $date2;} ?>" class="input"
+                                        name="date2" type="date" placeholder="e.g 3">
                                 </p>
                             </div>
 
@@ -125,9 +132,81 @@
                         </form>
                     </div>
                 </div>
+                <div class="column">
+                    <div class="box first has-text-white">
+                        <h2 class="title has-text-white has-text-centered is-2">Hotel 1</h2>
+                        <p>
+                            A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
+                            multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
+
+                            Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business centre,
+                            meeting rooms, and lifts.
+
+                            Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
+                            are halal certified.
+                        </p>
+                    </div>
+                    <div class="box second has-text-white">
+                        <h2 class="title has-text-white has-text-centered is-2">Hotel 2</h2>
+                        <p>
+                            A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
+                            multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
+
+                            Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business centre,
+                            meeting rooms, and lifts.
+
+                            Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
+                            are halal certified.
+                        </p>
+                    </div>
+                    <div class="box third has-text-white">
+                        <h2 class="title has-text-white has-text-centered is-2">Hotel 3</h2>
+                        <p>
+                            A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
+                            multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
+
+                            Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business centre,
+                            meeting rooms, and lifts.
+
+                            Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
+                            are halal certified.
+                        </p>
+                    </div>
+                    <div class="box is-invisible has-text-white">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    <!-- jQuery JS 3.1.0 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        // var selectedItem = sessionStorage.getItem("SelectedItem");
+        // $('#dropdown').val(selectedItem);
+
+        $('select').change(function () {
+            var sel = $('select option:selected');
+            if (sel.val() == "Hotel 1") {
+                $('.section').css('background-image',
+                    "url('img/governor-s-mansion-montgomery-alabama-grand-staircase-161758.jpeg')");
+                $('.first').css('display', "block");
+                $('.second').css('display', "none");
+                $('.third').css('display', "none");
+            } else if (sel.val() == "Hotel 2") {
+                $('.section').css('background-image', "url('img/pexels-photo-573552.jpeg')");
+                $('.section').css('background-size', "cover");
+                $('.first').css('display', "none");
+                $('.second').css('display', "block");
+                $('.third').css('display', "none");
+            } else if (sel.val() == "Hotel 3") {
+                $('.section').css('background-image', "url('img/pexels-photo-573552.jpeg')");
+                $('.section').css('background-size', "cover");
+                $('.first').css('display', "none");
+                $('.second').css('display', "none");
+                $('.third').css('display', "block");
+            }
+        });
+    </script>
 </body>
 
 </html>
