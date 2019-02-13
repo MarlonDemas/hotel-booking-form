@@ -61,7 +61,7 @@
             ::placeholder {
                 color: black !important;
             }
-            .second, .third {
+            .first, .second, .third {
                 display: none;
             }
         </style>
@@ -96,6 +96,7 @@
                                 <p class="control">
                                     <span class="select">
                                         <select id="dropdown" name="hotelname">
+                                            <option>--please select your hotel--</option>
                                             <option value="Hotel 1">Hotel 1</option>
                                             <option value="Hotel 2">Hotel 2</option>
                                             <option value="Hotel 3">Hotel 3</option>
@@ -181,8 +182,8 @@
     <!-- jQuery JS 3.1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-        // var selectedItem = sessionStorage.getItem("SelectedItem");
-        // $('#dropdown').val(selectedItem);
+        var selectedItem = sessionStorage.getItem("SelectedItem");
+        $('#dropdown').val(selectedItem);
 
         $('select').change(function () {
             var sel = $('select option:selected');
