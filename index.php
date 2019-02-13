@@ -96,7 +96,7 @@
                                 <p class="control">
                                     <span class="select">
                                         <select id="dropdown" name="hotelname">
-                                            <option>--please select your hotel--</option>
+                                            <option selected>--please select a hotel--</option>
                                             <option value="Hotel 1">Hotel 1</option>
                                             <option value="Hotel 2">Hotel 2</option>
                                             <option value="Hotel 3">Hotel 3</option>
@@ -134,9 +134,17 @@
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box first has-text-white">
-                        <h2 class="title has-text-white has-text-centered is-2">Hotel 1</h2>
-                        <p>
+                    <div class="card first">
+                        <header class="card-header">
+                            <p class="card-header-title has-text-color-grey" style="font-size: 2em;">
+                                Hotel 1
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="price">
+                                R350 per night
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
                             A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
                             multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
 
@@ -145,11 +153,20 @@
 
                             Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
                             are halal certified.
-                        </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="box second has-text-white">
-                        <h2 class="title has-text-white has-text-centered is-2">Hotel 2</h2>
-                        <p>
+                    <div class="card second">
+                        <header class="card-header">
+                            <p class="card-header-title has-text-color-grey" style="font-size: 2em;">
+                                Hotel 2
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="price">
+                                R550 per night
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
                             A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
                             multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
 
@@ -158,11 +175,20 @@
 
                             Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
                             are halal certified.
-                        </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="box third has-text-white">
-                        <h2 class="title has-text-white has-text-centered is-2">Hotel 3</h2>
-                        <p>
+                    <div class="card third">
+                        <header class="card-header">
+                            <p class="card-header-title has-text-color-grey" style="font-size: 2em;">
+                                Hotel 3
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="price">
+                                R700 per night
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
                             A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
                             multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
 
@@ -171,13 +197,11 @@
 
                             Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
                             are halal certified.
-                        </p>
-                    </div>
-                    <div class="box is-invisible has-text-white">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- jQuery JS 3.1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
