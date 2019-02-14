@@ -1,5 +1,8 @@
 <?php
     require_once "connect.php";
+    include "classes.php";
+
+    $commit = new Commit;
 
     $name = $surname = $hotel = $days = "";
 
@@ -11,10 +14,7 @@
             arriveDate VARCHAR(128) NOT NULL,
             departDate VARCHAR(128) NOT NULL)";
 
-    if ($db_server->query($sql)) {
-    } else {
-        echo "Error: " . $sql . "<br>" . $db_server->error;
-    }
+    $commit->work;
 
     if (isset($_POST['submit'])) {
         $name = $_POST['name'];
@@ -25,10 +25,7 @@
 
         $sql = "INSERT INTO hotel(Name, Surname, HotelName, arriveDate, departDate) VALUES ('$name','$surname','$hotel','$date1','$date2')";
 
-        if ($db_server->query($sql)) {
-        } else {
-            echo "Error: " . $sql . "<br>" . $db_server->error;
-        }
+        $commit->work;
 
     }
 
