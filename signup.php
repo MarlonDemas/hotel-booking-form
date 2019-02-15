@@ -1,3 +1,26 @@
+<?php
+    require_once "class.user.php";
+
+    $user = new User;
+    $register="";
+    $passErr = 'Passwords do not match!';
+    $userErr = 'Username already exists, please try again';
+
+    if (isset($_POST['submit'])) {
+        $uname = $_POST['user'];
+        $pass = $_POST['pass'];
+        $cpass = $_POST['cpass'];
+
+        $register = $user->reg_user($uname,$pass, $cpass);
+
+        if($register){
+            echo 'Registration successful <a href="login.php">Click here</a> to login';
+        } //else {
+        //     echo 'Registration failed. Username already exits please try again';
+        // }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,6 +59,13 @@
                     <div class="box">
                         <h3 class="title has-text-black">Sign Up</h3>
                         <p class="subtitle has-text-black">Please sign up to proceed.</p>
+                        <p>
+                            <?php
+                                if($register){
+                                    header('Location: index.php');
+                                }
+                            ?>
+                        </p>
                         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                             <div class="field">
                                 <div class="control">
@@ -43,6 +73,13 @@
                                         autofocus="">
                                 </div>
                             </div>
+                            <p>
+                                <?php 
+                                    if($register == $userErr){
+                                        echo "Username already exists, please try again";
+                                    }
+                                ?>
+                            </p>
 
                             <div class="field">
                                 <div class="control">
@@ -55,6 +92,13 @@
                                     <input class="input is-large" name="cpass" required type="password" placeholder="Confirm Password">
                                 </div>
                             </div>
+                            <p>
+                                <?php 
+                                    if($register == $passErr){
+                                        echo $register;
+                                    }
+                                ?>
+                            </p>
                             <button class="button is-block is-info is-large is-fullwidth" name="submit">Sign Up</button>
                             <hr>
                             Already a member?
