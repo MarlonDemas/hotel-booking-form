@@ -1,8 +1,5 @@
 <?php
     require_once "connect.php";
-    include "classes.php";
-
-    $commit = new Commit;
 
     $name = $surname = $hotel = $days = "";
 
@@ -14,7 +11,10 @@
             arriveDate VARCHAR(128) NOT NULL,
             departDate VARCHAR(128) NOT NULL)";
 
-    $commit->work;
+    if ($db_server->query($sql)) {
+    } else {
+        echo "Error: " . $sql . "<br>" . $db_server->error;
+    }
 
     if (isset($_POST['submit'])) {
         $name = $_POST['name'];
@@ -24,8 +24,11 @@
         $date2 = $_POST['date2'];
 
         $sql = "INSERT INTO hotel(Name, Surname, HotelName, arriveDate, departDate) VALUES ('$name','$surname','$hotel','$date1','$date2')";
-
-        $commit->work;
+        
+        if ($db_server->query($sql)) {
+        } else {
+            echo "Error: " . $sql . "<br>" . $db_server->error;
+        }
 
     }
 
@@ -142,14 +145,17 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                            A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
-                            multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
+                                A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
+                                multi-storey premises, meaning that many guest rooms offer fine mountain or ocean
+                                views.
 
-                            Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business centre,
-                            meeting rooms, and lifts.
+                                Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business
+                                centre,
+                                meeting rooms, and lifts.
 
-                            Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
-                            are halal certified.
+                                Besides a relaxed bar and room service, the hotel offers two restaurants and both
+                                venues
+                                are halal certified.
                             </div>
                         </div>
                     </div>
@@ -164,14 +170,17 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                            A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
-                            multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
+                                A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
+                                multi-storey premises, meaning that many guest rooms offer fine mountain or ocean
+                                views.
 
-                            Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business centre,
-                            meeting rooms, and lifts.
+                                Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business
+                                centre,
+                                meeting rooms, and lifts.
 
-                            Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
-                            are halal certified.
+                                Besides a relaxed bar and room service, the hotel offers two restaurants and both
+                                venues
+                                are halal certified.
                             </div>
                         </div>
                     </div>
@@ -186,14 +195,17 @@
                         </header>
                         <div class="card-content">
                             <div class="content">
-                            A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
-                            multi-storey premises, meaning that many guest rooms offer fine mountain or ocean views.
+                                A contemporary, mid-range property in central Cape Town, Hotel 1 occupies
+                                multi-storey premises, meaning that many guest rooms offer fine mountain or ocean
+                                views.
 
-                            Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business centre,
-                            meeting rooms, and lifts.
+                                Conveniences include a 24-hour reception, Wi-Fi access, free parking, a business
+                                centre,
+                                meeting rooms, and lifts.
 
-                            Besides a relaxed bar and room service, the hotel offers two restaurants and both venues
-                            are halal certified.
+                                Besides a relaxed bar and room service, the hotel offers two restaurants and both
+                                venues
+                                are halal certified.
                             </div>
                         </div>
                     </div>
