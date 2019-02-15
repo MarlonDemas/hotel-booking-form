@@ -1,3 +1,23 @@
+<?php
+    session_start();
+
+    require_once "class.user.php";
+    $user = new User;
+
+    if (isset($_POST['submit'])) {
+        $uname = $_POST['user'];
+        $pass = $_POST['pass'];
+
+        $login = $user->check_login($uname, $pass);
+
+        if($login){
+            header("location:home.php");
+        } else {
+            echo "Wrong username or password";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

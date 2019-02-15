@@ -20,7 +20,7 @@
                 $passErr = 'Passwords do not match!';
                 return $passErr;
             } else {
-                $pass = password_hash($pass, PASSWORD_DEFAULT);
+                $pass = md5($pass);
                 $sql = "SELECT * FROM users WHERE uname = '$uname'";
 
                 $check = $this->db->query($sql);
@@ -36,5 +36,24 @@
                     return $userErr;
                 }
             }
+        }
+
+        // For login process
+        public function check_login($uname, $pass) {
+            $pass = md5($pass);
+            $sql = "SELECT userID from users WHERE uname='$uname' and pass='$pass'";
+
+            $result = $this->db->query($sql);
+            $user_data = mysqli_fetch_array($result);
+            $count_row = $result->num_rows;
+
+            if ($count_row == 1) {
+                $_SESSION['login'] = true;
+                $_SESSION['userID'] = $user_data['userID'];
+                return true;
+            } else {
+                return false;
+            }
+            
         }
     }
