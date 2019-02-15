@@ -24,7 +24,7 @@
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="https://bulma.io">
-                        <h3 class="title is-4 has-text-weight-bold has-text-black is-uppercase">me&you</h3>
+                        <h3 class="title is-5 has-text-weight-bold has-text-black is-uppercase">BookINN</h3>
                     </a>
                 </div>
             </nav>
@@ -37,13 +37,13 @@
                             <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" name="user" type="user" placeholder="Your Username" autofocus="">
+                                        <input class="input is-large" required name="user" type="user" placeholder="Your Username" autofocus="">
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" name="pass" type="password" placeholder="Your Password">
+                                        <input class="input is-large" name="pass" required type="password" placeholder="Your Password">
                                     </div>
                                 </div>
                                 <button name="submit" class="button is-block is-info is-large is-fullwidth">Login</button>
