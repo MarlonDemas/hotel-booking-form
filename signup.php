@@ -5,19 +5,15 @@
     $register="";
     $passErr = 'Passwords do not match!';
     $userErr = 'Username already exists, please try again';
+    $success = 'Registration successful';
 
     if (isset($_POST['submit'])) {
+        $fname = $_POST['fname'];
         $uname = $_POST['user'];
         $pass = $_POST['pass'];
         $cpass = $_POST['cpass'];
 
-        $register = $user->reg_user($uname,$pass, $cpass);
-
-        if($register){
-            echo 'Registration successful <a href="login.php">Click here</a> to login';
-        } //else {
-        //     echo 'Registration failed. Username already exits please try again';
-        // }
+        $register = $user->reg_user($fname, $uname,$pass, $cpass);
     }
 ?>
 
@@ -61,12 +57,19 @@
                         <p class="subtitle has-text-black">Please sign up to proceed.</p>
                         <p>
                             <?php
-                                if($register){
-                                    header('Location: index.php');
+                                if($register == $success){
+                                    echo '<div class="notification is-success">Registration successful <a href="login.php">Click here</a> to login</div>';
                                 }
                             ?>
                         </p>
                         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+                        <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" name="fname" required type="text" placeholder="Your Full Name"
+                                        autofocus="">
+                                </div>
+                            </div>
+
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" name="user" required type="user" placeholder="Your Username"
@@ -76,7 +79,7 @@
                             <p>
                                 <?php 
                                     if($register == $userErr){
-                                        echo "Username already exists, please try again";
+                                        echo $userErr;
                                     }
                                 ?>
                             </p>

@@ -15,7 +15,7 @@
         }
 
         // For registration process
-        public function reg_user($uname, $pass, $cpass) {
+        public function reg_user($fname, $uname, $pass, $cpass) {
             if($pass != $cpass) {
                 $passErr = 'Passwords do not match!';
                 return $passErr;
@@ -27,9 +27,10 @@
                 $count_row = $check->num_rows;
 
                 if($count_row == 0) {
-                    $sql = "INSERT INTO users(uname, pass) VALUES ('$uname','$pass')";
-                    $result = $this->db->query($sql);
-                    return $result;
+                    $sql = "INSERT INTO users(fname, uname, pass) VALUES ('$fname','$uname','$pass')";
+                    $this->db->query($sql);
+                    $success = 'Registration successful';
+                    return $success;
                 } else {
                     $userErr = 'Username already exists, please try again';
                     return $userErr;
