@@ -3,6 +3,9 @@
 
     require_once "class.user.php";
     $user = new User;
+    $login ="";
+    $userErr ="Invalid username, please try again";
+    $passErr ="Password incorrect, please try again";
 
     if (isset($_POST['submit'])) {
         $uname = $_POST['user'];
@@ -10,10 +13,8 @@
 
         $login = $user->check_login($uname, $pass);
 
-        if($login){
+        if($login === true){
             header("location:home.php");
-        } else {
-            echo "Wrong username or password";
         }
     }
 ?>
@@ -55,9 +56,20 @@
                         <h3 class="title has-text-black">Login</h3>
                         <p class="subtitle has-text-black">Please login to proceed.</p>
                             <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+
+                                <p>
+                                    <?php
+                                        if($login == $userErr){
+                                            echo '<div class="notification is-danger">'.$userErr.'</div>';
+                                        } else if($login == $passErr) {
+                                            echo '<div class="notification is-danger">'.$passErr.'</div>';
+                                        }
+                                    ?>
+                                </p>
+
                                 <div class="field">
                                     <div class="control">
-                                        <input class="input is-large" required name="user" type="user" placeholder="Your Username" autofocus="">
+                                        <input class="input is-large" required name="user" type="text" placeholder="Your Username" autofocus="">
                                     </div>
                                 </div>
 
@@ -66,6 +78,7 @@
                                         <input class="input is-large" name="pass" required type="password" placeholder="Your Password">
                                     </div>
                                 </div>
+
                                 <button name="submit" class="button is-block is-info is-large is-fullwidth">Login</button>
                                 <hr>
                                 Don't have an account? 

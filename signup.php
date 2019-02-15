@@ -59,6 +59,10 @@
                             <?php
                                 if($register == $success){
                                     echo '<div class="notification is-success">Registration successful <a href="login.php">Click here</a> to login</div>';
+                                } else if($register == $userErr){
+                                    echo '<div class="notification is-danger">'.$userErr.'</div>';
+                                } else if($register == $passErr){
+                                    echo '<div class="notification is-danger">'.$passErr.'</div>';
                                 }
                             ?>
                         </p>
@@ -72,17 +76,10 @@
 
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" name="user" required type="user" placeholder="Your Username"
+                                    <input class="input is-large" name="user" required type="text" placeholder="Your Username"
                                         autofocus="">
                                 </div>
                             </div>
-                            <p>
-                                <?php 
-                                    if($register == $userErr){
-                                        echo $userErr;
-                                    }
-                                ?>
-                            </p>
 
                             <div class="field">
                                 <div class="control">
@@ -95,13 +92,7 @@
                                     <input class="input is-large" name="cpass" required type="password" placeholder="Confirm Password">
                                 </div>
                             </div>
-                            <p>
-                                <?php 
-                                    if($register == $passErr){
-                                        echo $register;
-                                    }
-                                ?>
-                            </p>
+                            
                             <button class="button is-block is-info is-large is-fullwidth" name="submit">Sign Up</button>
                             <hr>
                             Already a member?
