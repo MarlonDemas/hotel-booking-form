@@ -19,7 +19,7 @@
                 $passErr = 'Passwords do not match!';
                 return $passErr;
             } else {
-                password_hash($pass,PASSWORD_DEFAULT);
+                $pass = password_hash($pass,PASSWORD_DEFAULT);
                 $sql = "SELECT * FROM users WHERE uname = '$uname'";
 
                 $check = $this->db->query($sql);
@@ -55,7 +55,32 @@
                 }
             } else {
                 return "Invalid username, please try again";
-            }
-            
+            }            
+        }
+
+        // For getting the fullname
+        public function get_fullname($userID) {
+            $sql = "SELECT fname FROM users WHERE userID = '$userID'";
+            $result = $this->db->query($sql);
+            $user_data = mysqli_fetch_array($result);
+            echo $user_data['fname'];
+        }
+
+        // For getting the username
+        public function get_username($userID) {
+            $sql = "SELECT uname FROM users WHERE userID = '$userID'";
+            $result = $this->db->query($sql);
+            $user_data = mysqli_fetch_array($result);
+            echo $user_data['uname'];
+        }
+
+        // Starting the session
+        public function get_session() {
+            return $_SESSION['login'];
+        }
+
+        public function user_logout() {
+            $_SESSION['login'] = FALSE;
+            session_destroy();
         }
     }

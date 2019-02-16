@@ -58,42 +58,68 @@
                         <p>
                             <?php
                                 if($register == $success){
-                                    echo '<div class="notification is-success">Registration successful <a href="login.php">Click here</a> to login</div>';
+                                    echo 
+                                    '<div class="notification is-success">
+                                    <span class="icon">
+                                        <i class="far fa-thumbs-up"></i>
+                                    </span> 
+                                    Registration successful <a href="login.php">Click here</a> to login</div>';
                                 } else if($register == $userErr){
-                                    echo '<div class="notification is-danger">'.$userErr.'</div>';
+                                    echo 
+                                    '<div class="notification is-danger">
+                                    <span class="icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span> '
+                                    .$userErr.
+                                    '</div>';
                                 } else if($register == $passErr){
-                                    echo '<div class="notification is-danger">'.$passErr.'</div>';
+                                    echo 
+                                    '<div class="notification is-danger">
+                                    <span class="icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span> '
+                                    .$passErr.
+                                    '</div>';
                                 }
                             ?>
                         </p>
                         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-                        <div class="field">
+                            <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" name="fname" required type="text" placeholder="Your Full Name"
+                                    <input class="input is-medium" name="fname" required type="text" placeholder="Your Full Name"
                                         autofocus="">
                                 </div>
                             </div>
 
                             <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" name="user" required type="text" placeholder="Your Username"
-                                        autofocus="">
+                                <div class="control has-icons-left">
+                                    <input class="input is-medium" name="user" required type="text" placeholder="Your Username">
+                                    <span class="icon is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" name="pass" required type="password" placeholder="Your Password">
+                                <div class="control has-icons-left">
+                                    <input class="input is-medium" name="pass" required type="password" placeholder="Your Password">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" name="cpass" required type="password" placeholder="Confirm Password">
+                                <div class="control has-icons-left">
+                                    <input class="input is-medium" name="cpass" required type="password" placeholder="Confirm Password">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
                                 </div>
+
                             </div>
-                            
-                            <button class="button is-block is-info is-large is-fullwidth" name="submit">Sign Up</button>
+
+                            <button class="button is-block is-info is-medium is-fullwidth" name="submit">Sign Up</button>
                             <hr>
                             Already a member?
                             <a href="../">Login Here</a>
