@@ -8,10 +8,10 @@
     $success = 'Registration successful';
 
     if (isset($_POST['submit'])) {
-        $fname = $_POST['fname'];
-        $uname = $_POST['user'];
-        $pass = $_POST['pass'];
-        $cpass = $_POST['cpass'];
+        $fname = trim($_POST['fname']);
+        $uname = trim($_POST['user']);
+        $pass = trim($_POST['pass']);
+        $cpass = trim($_POST['cpass']);
 
         $register = $user->reg_user($fname, $uname,$pass, $cpass);
     }
@@ -45,7 +45,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="https://bulma.io">
-                    <h3 class="title is-5 has-text-weight-bold has-text-black is-uppercase">BookINN</h3>
+                    <h3 class="title is-5 has-text-weight-bold has-text-black">BookINN</h3>
                 </a>
             </div>
         </nav>

@@ -45,7 +45,7 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
-                <h3 class="title is-5 has-text-weight-bold has-text-black is-uppercase">BookINN</h3>
+                <h3 class="title is-5 has-text-weight-bold has-text-black">BookINN</h3>
             </a>
         </div>
 
@@ -57,7 +57,7 @@
                     <?php 
                         $user->get_username($userID);
                     ?>
-                        | <a href="home.php?q=logout">LOGOUT</a>
+                        | <a href="home.php?q=logout">Log Out</a>
                     </span>
                 </div>
             </div>

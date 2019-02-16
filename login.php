@@ -8,8 +8,8 @@
     $passErr ="Password incorrect, please try again";
 
     if (isset($_POST['submit'])) {
-        $uname = $_POST['user'];
-        $pass = $_POST['pass'];
+        $uname = trim($_POST['user']);
+        $pass = trim($_POST['pass']);
 
         $login = $user->check_login($uname, $pass);
 
@@ -47,7 +47,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="https://bulma.io">
-                    <h3 class="title is-5 has-text-weight-bold has-text-black is-uppercase">BookINN</h3>
+                    <h3 class="title is-5 has-text-weight-bold has-text-black">BookINN</h3>
                 </a>
             </div>
         </nav>
