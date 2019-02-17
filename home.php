@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once "class.user.php";
+    require_once "class.hotel.php";
 
     $user = new User;
     $userID = $_SESSION['userID'];
@@ -102,7 +103,7 @@
                             <div class="field">
                                 <label class="label">Check-in Date</label>
                                 <p class="control has-icons-left">
-                                    <input class="input" name="date1" type="date" value="<?php echo date('Y-m-d');?>">
+                                    <input class="input" name="date_in" type="date" value="<?php echo date('Y-m-d');?>">
                                     <span class="icon is-left">
                                         <i class="far fa-calendar-alt"></i>
                                     </span>
@@ -112,7 +113,7 @@
                             <div class="field">
                                 <label class="label">Check-out Date</label>
                                 <p class="control has-icons-left">
-                                    <input class="input" name="date2" type="date" value="<?php echo date('Y-m-d'); ?>">
+                                    <input class="input" name="date_out" type="date" value="<?php echo date('Y-m-d'); ?>">
                                     <span class="icon is-left">
                                         <i class="far fa-calendar-alt"></i>
                                     </span>
@@ -122,14 +123,14 @@
                             <div class="field">
                                 <label class="label">No. of Guests</label>
                                 <p class="control">
-                                    <input class="input" name="date2" type="number" min="1" max="15" value="1">
+                                    <input class="input" name="num_guests" type="number" min="1" max="15" value="1">
                                 </p>
                             </div>
                             
                             <div class="field">
                                 <label class="label">No. of Rooms</label>
                                 <p class="control">
-                                    <input class="input" name="date2" type="number" min="1" max="5" value="1">
+                                    <input class="input" name="num_rooms" type="number" min="1" max="5" value="1">
                                 </p>
                             </div>
 
