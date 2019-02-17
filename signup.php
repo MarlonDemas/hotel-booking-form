@@ -103,7 +103,7 @@
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <input class="input is-medium" name="pass" required type="password" placeholder="Your Password">
-                                    <span class="icon is-small is-left">
+                                    <span class="icon is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>
@@ -112,7 +112,7 @@
                             <div class="field">
                                 <div class="control has-icons-left">
                                     <input class="input is-medium" name="cpass" required type="password" placeholder="Confirm Password">
-                                    <span class="icon is-small is-left">
+                                    <span class="icon is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>

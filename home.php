@@ -36,6 +36,12 @@
             background: rgba(255, 255, 255, 0.6);
             padding-bottom: 10px;
         }
+
+        .section {
+            position: absolute;
+            top: 20%;
+            left: 15%;
+        }
     </style>
 </head>
 
@@ -53,8 +59,8 @@
             <div class="navbar-item">
                 <div class="buttons">
                     <span class="has-text-black">
-                    Logged in as 
-                    <?php 
+                        Logged in as
+                        <?php 
                         $user->get_username($userID);
                     ?>
                         | <a href="home.php?q=logout">Log Out</a>
@@ -62,6 +68,67 @@
                 </div>
             </div>
     </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <div class="box">
+                        <h2 class="title is-4 has-text-centered">Make Your Booking</h2>
+                        <div class="field">
+                            <label class="label">Select your hotel</label>
+                            <p class="control has-icons-left">
+                                <span class="select">
+                                    <select name="hotelname">
+                                        <option>--please select your hotel--</option>
+                                        <option value="Hotel 1">Hotel 1</option>
+                                        <option value="Hotel 2">Hotel 2</option>
+                                        <option value="Hotel 3">Hotel 3</option>
+                                    </select>
+                                </span>
+                                <span class="icon is-left">
+                                    <i class="fas fa-hotel"></i>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Check-in Date</label>
+                            <p class="control has-icons-left">
+                                <input class="input" name="date1" type="date" value="<?php echo date('Y-m-d');?>">
+                                <span class="icon is-left">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Check-out Date</label>
+                            <p class="control has-icons-left">
+                                <input class="input" name="date2" type="date" value="<?php echo date('Y-m-d'); ?>">
+                                <span class="icon is-left">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">No. of Guests</label>
+                            <p class="control has-icons-left">
+                                <input class="input" name="date2" type="number">
+                            </p>
+                        </div>
+
+                        <div class="field is-grouped is-centered">
+                            <div class="control">
+                                <button class="button is-link" name="submit">Submit Booking</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
