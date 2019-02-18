@@ -60,8 +60,10 @@
             max-height: 290px;
         }
 
-        .mystyle {
-            display: none;
+        .book {
+            position: absolute;
+            top: 30%;
+            left: 30%;
         }
     </style>
 </head>
@@ -229,34 +231,37 @@
                             </div>
                         </div>
                     </div>
-                    <?php if(isset($_POST['submit'])){ 
-                        if ($user->make_booking()) { ?>
-                            <p class="box book">
-                                <strong>
-                                    Hello <?php $user->get_fullname($userID); ?><br>
-                                    You are booking the <?php $user->get_hotel(); ?>.
-                                </strong><br>
-                                Check-in date: <strong><?php $user->get_check_in_date(); ?></strong><br>
-                                Check-out date: <strong><?php $user->get_check_out_date(); ?></strong><br>
-                                Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
-                                Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
-                                Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
-                                Daily Rate: <strong><?php $user->get_rate(); ?></strong><br>
-                                Total: <strong><?php $user->get_total(); ?></strong>
-                            </p>
-                        <?php } else { ?>
-                        <p class="box book">
-                            <strong>
-                                Hello <?php $user->get_fullname($userID); ?><br>
-                                Our records show that you have already made this booking. 
-                            </strong>
-                        </p>
-                        <?php }
-                        } ?>
                 </div>
             </div>
         </div>
     </section>
+    <?php if(isset($_POST['submit'])){ 
+                if ($user->make_booking()) { ?>
+                    <script>
+                        document.getElementById("myDIV").style.display = "none";
+                    </script>
+                    <p class="box book">
+                        <strong>
+                            Hello <?php $user->get_fullname($userID); ?>
+                            You are booking the <?php $user->get_hotel(); ?>.
+                        </strong><br>
+                        Check-in date: <strong><?php $user->get_check_in_date(); ?></strong><br>
+                        Check-out date: <strong><?php $user->get_check_out_date(); ?></strong><br>
+                        Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
+                        Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
+                        Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
+                        Daily Rate: <strong><?php $user->get_rate(); ?></strong><br>
+                        Total: <strong><?php $user->get_total(); ?></strong>
+                    </p>
+                <?php } else { ?>
+                <p class="box book">
+                    <strong>
+                        Hello <?php $user->get_fullname($userID); ?><br>
+                        Our records show that you have already made this booking. 
+                    </strong>
+                </p>
+                <?php }
+            } ?>
     <!-- jQuery JS 3.1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
@@ -285,7 +290,7 @@
                 $('.third').css('display', "none");
                 $('.book').css('display', "none");
             }
-        });
+        }); 
     </script>
 </body>
 
