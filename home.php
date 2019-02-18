@@ -1,9 +1,16 @@
 <?php
     session_start();
     require_once "class.user.php";
-    require_once "class.hotel.php";
 
     $user = new User;
+    $user->db->query("CREATE TABLE IF NOT EXISTS bookings (
+                    hotelID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                    hotel_name VARCHAR(128) NOT NULL,
+                    date_in DATETIME NOT NULL,
+                    date_out DATETIME NOT NULL,
+                    num_guests INT(2) NOT NULL,
+                    num_rooms INT(2) NOT NULL)");
+                    
     $userID = $_SESSION['userID'];
 
     if (!$user->get_session()) {
@@ -13,6 +20,10 @@
     if(isset($_GET['q'])) {
         $user->user_logout();
         header("location:login.php");
+    }
+
+    if (isset($_POST['submit'])) {
+        $user->make_booking();
     }
 ?>
 
@@ -29,6 +40,7 @@
         .hero {
             background-image: url("img/pexels-photo-189296.jpeg");
             background-size: cover;
+            background-attachment: fixed;
             background-repeat: no-repeat;
             filter: blur(3px);
             }
@@ -40,11 +52,11 @@
 
         .section {
             position: absolute;
-            top: 10%;
+            top: 5%;
             left: 15%;
         }
         .first, .second, .third {
-                display: none;
+            display: none;
         }
         .image img {
             max-height: 290px;
@@ -89,9 +101,9 @@
                                     <span class="select">
                                         <select name="hotelname">
                                             <option value="">--please select your hotel--</option>
-                                            <option value="Hotel 1">Voyage Hotel</option>
-                                            <option value="Hotel 2">Summer Dune Hotel</option>
-                                            <option value="Hotel 3">Sapphire Hotel</option>
+                                            <option value="Voyage Hotel">Voyage Hotel</option>
+                                            <option value="Summer Dune Hotel">Summer Dune Hotel</option>
+                                            <option value="Sapphire Hotel">Sapphire Hotel</option>
                                         </select>
                                     </span>
                                     <span class="icon is-left">
@@ -176,7 +188,7 @@
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-content">
-                                    <p class="title is-4">Summer Dune Hotel</p>
+                                    <p class="title is-4">Summer Dune</p>
                                 </div>
                                 <div class="media-right">
                                     <p>R290 per person</p>
@@ -215,6 +227,19 @@
                             </div>
                         </div>
                     </div>
+                    <?php if(isset($_POST['submit'])): ?>
+                    <p class="box">
+                        <strong>
+                            Hello <?php $user->get_fullname($userID); ?><br>
+                            You are booking the <?php $user->get_hotel(); ?>.
+                        </strong><br>
+                        Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
+                        Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
+                        Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
+                        Daily Rate: <strong><?php $user->get_rate(); ?></strong><br>
+                        Total: <strong><?php $user->get_total(); ?></strong>
+                    </p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -226,15 +251,15 @@
         // $('#dropdown').val(selectedItem);
         $('select').change(function () {
             var sel = $('select option:selected');
-            if (sel.val() == "Hotel 1") {
+            if (sel.val() == "Voyage Hotel") {
                 $('.first').css('display', "block");
                 $('.second').css('display', "none");
                 $('.third').css('display', "none");
-            } else if (sel.val() == "Hotel 2") {
+            } else if (sel.val() == "Summer Dune Hotel") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "block");
                 $('.third').css('display', "none");
-            } else if (sel.val() == "Hotel 3") {
+            } else if (sel.val() == "Sapphire Hotel") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "none");
                 $('.third').css('display', "block");

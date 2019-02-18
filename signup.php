@@ -63,7 +63,7 @@
                                     <span class="icon">
                                         <i class="far fa-thumbs-up"></i>
                                     </span> 
-                                    Registration successful <a href="login.php">Click here</a> to login</div>';
+                                    Registration successful <br><a href="login.php">Click here</a> to login</div>';
                                 } else if($register == $userErr){
                                     echo 
                                     '<div class="notification is-danger">
