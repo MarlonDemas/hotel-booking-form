@@ -104,8 +104,9 @@
             if($count_row == 0) {
                 $sql = "INSERT INTO bookings(hotel_name, date_in, date_out, num_guests, num_rooms) VALUES ('$this->hotel', '$this->date_in', '$this->date_out', '$this->num_guests', '$this->num_rooms')";
                 $this->db->query($sql);
+                return true;
             } else {
-                return FALSE;
+                return false;
             }
         }
 

@@ -22,9 +22,9 @@
         header("location:login.php");
     }
 
-    if (isset($_POST['submit'])) {
-        $user->make_booking();
-    }
+    // if (isset($_POST['submit'])) {
+    //     $booking = $user->make_booking();
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             filter: blur(3px);
-            }
+        }
 
         body .navbar {
             background: rgba(255, 255, 255, 0.6);
@@ -55,11 +55,17 @@
             top: 5%;
             left: 15%;
         }
+
         .first, .second, .third {
             display: none;
         }
+
         .image img {
             max-height: 290px;
+        }
+
+        .mystyle {
+            display: none;
         }
     </style>
 </head>
@@ -92,7 +98,7 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-one-third">
-                    <div class="box">
+                    <div class="box" id="myDIV">
                         <h2 class="title is-4 has-text-centered">Make Your Booking</h2>
                         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="form">
                             <div class="field">
@@ -227,19 +233,28 @@
                             </div>
                         </div>
                     </div>
-                    <?php if(isset($_POST['submit'])): ?>
-                    <p class="box">
-                        <strong>
-                            Hello <?php $user->get_fullname($userID); ?><br>
-                            You are booking the <?php $user->get_hotel(); ?>.
-                        </strong><br>
-                        Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
-                        Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
-                        Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
-                        Daily Rate: <strong><?php $user->get_rate(); ?></strong><br>
-                        Total: <strong><?php $user->get_total(); ?></strong>
-                    </p>
-                    <?php endif; ?>
+                    <?php if(isset($_POST['submit'])){ 
+                        if ($user->make_booking()) { ?>
+                            <p class="box">
+                                <strong>
+                                    Hello <?php $user->get_fullname($userID); ?><br>
+                                    You are booking the <?php $user->get_hotel(); ?>.
+                                </strong><br>
+                                Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
+                                Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
+                                Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
+                                Daily Rate: <strong><?php $user->get_rate(); ?></strong><br>
+                                Total: <strong><?php $user->get_total(); ?></strong>
+                            </p>
+                        <?php } else { ?>
+                        <p class="box">
+                            <strong>
+                                Hello <?php $user->get_fullname($userID); ?><br>
+                                Our records show that you have already made this booking. 
+                            </strong>
+                        </p>
+                        <?php }
+                        } ?>
                 </div>
             </div>
         </div>
