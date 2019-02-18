@@ -31,7 +31,7 @@
                     $success = 'Registration successful';
                     return $success;
                 } else {
-                    $userErr = 'Username already exists, please try again';
+                    $userErr = 'Username already exists';
                     return $userErr;
                 }
             }
@@ -51,10 +51,10 @@
                     $_SESSION['userID'] = $user_data['userID'];
                     return true;
                 } else {
-                    return "Password incorrect, please try again";
+                    return "Password incorrect";
                 }
             } else {
-                return "Invalid username, please try again";
+                return "Invalid username";
             }            
         }
 

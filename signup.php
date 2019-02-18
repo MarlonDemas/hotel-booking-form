@@ -4,7 +4,7 @@
     $user = new User;
     $register="";
     $passErr = 'Passwords do not match!';
-    $userErr = 'Username already exists, please try again';
+    $userErr = 'Username already exists';
     $success = 'Registration successful';
 
     if (isset($_POST['submit'])) {

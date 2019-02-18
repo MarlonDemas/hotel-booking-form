@@ -4,8 +4,8 @@
     require_once "class.user.php";
     $user = new User;
     $login ="";
-    $userErr ="Invalid username, please try again";
-    $passErr ="Password incorrect, please try again";
+    $userErr ="Invalid username";
+    $passErr ="Password incorrect";
 
     if (isset($_POST['submit'])) {
         $uname = trim($_POST['user']);
