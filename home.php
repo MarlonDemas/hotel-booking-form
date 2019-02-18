@@ -74,8 +74,8 @@
             top: 30%;
             left: 30%;
         }
-        .fail {
-            left: 20%;
+        .double {
+            left: 35%;
         }
     </style>
 </head>
