@@ -187,10 +187,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Phasellus nec iaculis mauris. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Animi quia nesciunt tempora vero neque pariatur culpa error cum quo eos, impedit
-                                magnam! Aspernatur consectetur ipsa quibusdam sint excepturi eligendi pariatur.
+                                Voyage Hotel features a 24-hour front desk, computer station, multilingual staff, tour/ticket assistance, and concierge services. Dry cleaning/laundry services and beach and casino shuttle services are available for an additional cost. Public areas are equipped with free Wi-Fi, and onsite parking is provided for a surcharge.
                             </div>
                         </div>
                     </div>
@@ -211,10 +208,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Phasellus nec iaculis mauris. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Animi quia nesciunt tempora vero neque pariatur culpa error cum quo eos, impedit
-                                magnam! Aspernatur consectetur ipsa quibusdam sint excepturi eligendi pariatur.
+                                Situated in a gorgeous spot right on the beach and looking out over majestic Table Mountain, The Summer Dune Hotel is a large resort-like complex offering a wide array of accommodation. It has a sophisticated pool terrace and numerous conference and meeting venues.
                             </div>
                         </div>
                     </div>
@@ -236,10 +230,8 @@
                             </div>
 
                             <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Phasellus nec iaculis mauris. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Animi quia nesciunt tempora vero neque pariatur culpa error cum quo eos, impedit
-                                magnam! Aspernatur consectetur ipsa quibusdam sint excepturi eligendi pariatur.
+                            Sapphire Hotel is set between the V&A Waterfront and the Table Mountain, which is dubbed as a world heritage site in Cape Town.  This luxurious five-star hotel boasts modern conference facilities. Most rooms have both dining and living areas the fitness room is well-equipped. 
+
                             </div>
                         </div>
                     </div>
@@ -293,7 +285,7 @@
                 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="form">
                     <div class="field">
                         <div class="control">
-                            <button class="button is-primary">New Booking</button>
+                            <button class="button is-primary">Home</button>
                         </div>
                     </div>
                 </form>
