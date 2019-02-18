@@ -110,10 +110,12 @@
             }
         }
 
+        // To get hotel name
         public function get_hotel() {
             echo $this->hotel;
         }
 
+        // To get the number of days
         public function get_num_days() {
             $datetime1 = new DateTime($this->date_in);
             $datetime2 = new DateTime($this->date_out);
@@ -122,6 +124,7 @@
             echo $this->interval->format('%a');
         }
 
+        // To get the the daily rate
         public function get_rate() {
             if($this->hotel == "Voyage Hotel"){
                 echo "R250 per person";
@@ -132,6 +135,7 @@
             }
         }
 
+        // To get the total
         public function get_total() {
             if($this->hotel == "Voyage Hotel"){
                $total = 250 * $this->num_guests * $this->num_rooms * $this->interval->format('%a');
@@ -144,11 +148,23 @@
             echo 'R' . $total;
         }
 
+        // To get the number of guests
         public function get_num_guests() {
             echo $this->num_guests;
         }
 
+        // To get the number of rooms
         public function get_num_rooms() {
             echo $this->num_rooms;
+        }
+
+        // To get the check-in date
+        public function get_check_in_date() {
+            echo $this->date_in;
+        }
+
+        // To get the check-out date
+        public function get_check_out_date() {
+            echo $this->date_out;
         }
     }

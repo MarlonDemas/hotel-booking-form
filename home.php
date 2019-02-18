@@ -21,10 +21,6 @@
         $user->user_logout();
         header("location:login.php");
     }
-
-    // if (isset($_POST['submit'])) {
-    //     $booking = $user->make_booking();
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -235,11 +231,13 @@
                     </div>
                     <?php if(isset($_POST['submit'])){ 
                         if ($user->make_booking()) { ?>
-                            <p class="box">
+                            <p class="box book">
                                 <strong>
                                     Hello <?php $user->get_fullname($userID); ?><br>
                                     You are booking the <?php $user->get_hotel(); ?>.
                                 </strong><br>
+                                Check-in date: <strong><?php $user->get_check_in_date(); ?></strong><br>
+                                Check-out date: <strong><?php $user->get_check_out_date(); ?></strong><br>
                                 Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
                                 Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
                                 Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
@@ -247,7 +245,7 @@
                                 Total: <strong><?php $user->get_total(); ?></strong>
                             </p>
                         <?php } else { ?>
-                        <p class="box">
+                        <p class="box book">
                             <strong>
                                 Hello <?php $user->get_fullname($userID); ?><br>
                                 Our records show that you have already made this booking. 
@@ -270,18 +268,22 @@
                 $('.first').css('display', "block");
                 $('.second').css('display', "none");
                 $('.third').css('display', "none");
+                $('.book').css('display', "none");
             } else if (sel.val() == "Summer Dune Hotel") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "block");
                 $('.third').css('display', "none");
+                $('.book').css('display', "none");
             } else if (sel.val() == "Sapphire Hotel") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "none");
                 $('.third').css('display', "block");
+                $('.book').css('display', "none");
             } else if (sel.val() == "") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "none");
                 $('.third').css('display', "none");
+                $('.book').css('display', "none");
             }
         });
     </script>
