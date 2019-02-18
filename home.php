@@ -4,12 +4,13 @@
 
     $user = new User;
     $user->db->query("CREATE TABLE IF NOT EXISTS bookings (
-                    hotelID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                    bookingID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     hotel_name VARCHAR(128) NOT NULL,
                     date_in DATETIME NOT NULL,
                     date_out DATETIME NOT NULL,
                     num_guests INT(2) NOT NULL,
-                    num_rooms INT(2) NOT NULL)");
+                    num_rooms INT(2) NOT NULL,
+                    hotel_booked INT(1) NOT NULL DEFAULT 0)");
                     
     $userID = $_SESSION['userID'];
 
@@ -20,6 +21,11 @@
     if(isset($_GET['q'])) {
         $user->user_logout();
         header("location:login.php");
+    }
+
+    if(isset($_POST['confirm'])) {
+        $bookedID = $_SESSION['bookedID'];
+        $user->confirm_booking($bookedID);
     }
 ?>
 
@@ -236,26 +242,39 @@
             </div>
         </div>
     </section>
-    
+
     <?php 
         if(isset($_POST['submit'])){ 
             if ($user->make_booking()) { ?>
+                <?php $bookedID = $user->get_booking_id();
+                $_SESSION['bookedID'] = $bookedID; ?>
                 <script>
                     document.getElementById("myDIV").style.display = "none";
                 </script>
-                <p class="box book">
+                <div class="box book">
                     <strong>
                         Hello <?php $user->get_fullname($userID); ?>
                         You are booking the <?php $user->get_hotel(); ?>.
                     </strong><br>
+                    Unique ID: <strong><?php $user->display_booking_id(); ?></strong><br>
                     Check-in date: <strong><?php $user->get_check_in_date(); ?></strong><br>
                     Check-out date: <strong><?php $user->get_check_out_date(); ?></strong><br>
                     Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
                     Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
                     Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
                     Daily Rate: <strong><?php $user->get_rate(); ?></strong><br>
-                    Total: <strong><?php $user->get_total(); ?></strong>
-                </p>
+                    Total: <strong><?php $user->get_total(); ?></strong><br><br>
+                    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="form">
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-link" name="confirm">Confirm Booking</button>
+                            </div>
+                            <div class="control">
+                                <button class="button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             <?php 
             } else { ?>
             <p class="box book">

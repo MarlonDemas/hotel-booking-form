@@ -93,10 +93,10 @@
             $this->num_rooms = $_POST['num_rooms'];
 
             $sql = "SELECT * FROM bookings WHERE (hotel_name = '$this->hotel' and
-                                                        date_in = '$this->date_in' and
-                                                        date_out = '$this->date_out' and
-                                                        num_guests = '$this->num_guests' and
-                                                        num_rooms = '$this->num_rooms')";
+                                                date_in = '$this->date_in' and
+                                                date_out = '$this->date_out' and
+                                                num_guests = '$this->num_guests' and
+                                                num_rooms = '$this->num_rooms')";
 
             $check = $this->db->query($sql);
             $count_row = $check->num_rows;
@@ -108,6 +108,25 @@
             } else {
                 return false;
             }
+        }
+
+        // To get current booking id
+        public function get_booking_id() {
+            $sql = "SELECT bookingID FROM bookings WHERE (hotel_name = '$this->hotel' and
+                                                        date_in = '$this->date_in' and
+                                                        date_out = '$this->date_out' and
+                                                        num_guests = '$this->num_guests' and
+                                                        num_rooms = '$this->num_rooms')";
+
+            $result = $this->db->query($sql);
+            $user_data = mysqli_fetch_array($result);
+
+            $this->bookingID = $user_data['bookingID'];
+            return $this->bookingID;
+        }
+
+        public function display_booking_id() {
+            echo $this->bookingID;
         }
 
         // To get hotel name
@@ -166,5 +185,11 @@
         // To get the check-out date
         public function get_check_out_date() {
             echo $this->date_out;
+        }
+
+        // To confirm your booking
+        public function confirm_booking($bookedID) {
+            $sql = "UPDATE bookings SET hotel_booked = 1 WHERE bookingID = $bookedID";
+            $this->db->query($sql);
         }
     }
