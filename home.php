@@ -70,10 +70,12 @@
         }
 
         .book {
-            
             position: absolute;
             top: 30%;
             left: 30%;
+        }
+        .fail {
+            left: 20%;
         }
     </style>
 </head>
@@ -280,12 +282,22 @@
                 </div>
             <?php 
             } else { ?>
-            <p class="box book">
+            <script>
+                document.getElementById("myDIV").style.display = "none";
+            </script>
+            <div class="box book double">
                 <strong>
                     Hello <?php $user->get_fullname($userID); ?><br>
                     Our records show that you have already made this booking. 
-                </strong>
-            </p>
+                </strong><br><br>
+                <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="form">
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary">New Booking</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <?php 
             }
         } 
