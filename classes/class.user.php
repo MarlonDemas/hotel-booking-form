@@ -1,5 +1,5 @@
 <?php
-    require_once "user.php";
+    require_once "config/user.php";
 
     class User {
         public $db;

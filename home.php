@@ -1,8 +1,11 @@
 <?php
     session_start();
-    require_once "class.user.php";
+    require_once "classes/class.user.php";
 
+    // Instantiating my user class
     $user = new User;
+
+    // Creating the bookings table if it does not already exist
     $user->db->query("CREATE TABLE IF NOT EXISTS bookings (
                     bookingID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     hotel_name VARCHAR(128) NOT NULL,
@@ -290,8 +293,6 @@
     <!-- jQuery JS 3.1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-        // var selectedItem = sessionStorage.getItem("SelectedItem");
-        // $('#dropdown').val(selectedItem);
         $('select').change(function () {
             var sel = $('select option:selected');
             if (sel.val() == "Voyage Hotel") {

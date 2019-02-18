@@ -1,7 +1,10 @@
 <?php
-    require_once "class.user.php";
+    require_once "classes/class.user.php";
 
+    // Instantiating my user class
     $user = new User;
+
+    // Initializing variables
     $register="";
     $passErr = 'Passwords do not match!';
     $userErr = 'Username already exists';
