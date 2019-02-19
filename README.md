@@ -2,7 +2,7 @@
 
 ## Description
 
-A form to book a room at a hotel of your choosing
+Creating a hotel booking form, using HTML, CSS, PHP, MySQL, and a little bit of JS. The form will have frontend validation using HTML and PHP. The form will include a dropdown with at least 3 different hotel options. The daily rate of the hotel will be displayed on selection and the total amount will be calculated based on the the users selections. The users selections will then be displayed and the user will have the option to confirm or cancel the booking. If the user makes the same booking twice a message will be displayed to the user to notify them of the double booking usig php validation.
 
 ## Purpose
 
