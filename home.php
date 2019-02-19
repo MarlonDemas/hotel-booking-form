@@ -50,18 +50,20 @@
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            filter: blur(3px);
         }
 
-        body .navbar {
+        body .hero .navbar {
             background: rgba(255, 255, 255, 0.6);
             padding-bottom: 10px;
         }
 
         .section {
-            position: absolute;
-            top: 5%;
-            left: 15%;
+            margin: auto;
+        }
+        
+        .box {
+            width: 70%;
+            margin: auto;
         }
 
         .first, .second, .third {
@@ -72,21 +74,56 @@
             max-height: 290px;
         }
 
-        .book {
-            position: absolute;
-            top: 30%;
-            left: 30%;
+        .card {
+            width: 70%;
+            margin: auto;
         }
-        .double {
-            left: 35%;
+
+        @media screen and (max-width: 1200px) {
+            .box {
+                width: 85%;
+            }
+
+            .card {
+                width: 85%;
+            }
+        }
+
+        @media screen and (max-width: 960px) {
+            .box {
+                width: 100%;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 770px) {
+            .box {
+                width: 70%;
+            }
+
+            .card {
+                width: 70%;
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+            .box {
+                width: 90%;
+            }
+
+            .card {
+                width: 90%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <section class="hero is-fullheight has-navbar-fixed-top">
-    </section>
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <section class="hero is-fullheight">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
                 <h3 class="title is-5 has-text-weight-bold has-text-black">BookINN</h3>
@@ -110,7 +147,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-one-third">
+                <div class="column is-half">
                     <div class="box" id="myDIV">
                         <h2 class="title is-4 has-text-centered">Make Your Booking</h2>
                         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="form">
@@ -173,7 +210,25 @@
                     </div>
                     </form>
                 </div>
-                <div class="column is-one-third">
+                <div class="column is-half">
+                    <div class="card bookinn" id="bookinn">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="img\pexels-photo-573552.jpeg" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Hotel BookINN</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Welcome to Hotel BookINN, a site where you can make a booking at one of three hotels. Once the booking is made a confirm message will pop up with the total price based on your selections and you will be able to cancel the booking if not satisfied. This site also helps avoid making double bookings and will notify you if that is the case.
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card first">
                         <div class="card-image">
                             <figure class="image">
@@ -211,7 +266,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                Situated in a gorgeous spot right on the beach and looking out over majestic Table Mountain, The Summer Dune Hotel is a large resort-like complex offering a wide array of accommodation. It has a sophisticated pool terrace and numerous conference and meeting venues.
+                                This hotel is situated in a gorgeous spot right on the beach and looking out over majestic Table Mountain, The Summer Dune Hotel is a large resort-like complex offering a wide array of accommodation. It has a sophisticated pool terrace and numerous conference and meeting venues.
                             </div>
                         </div>
                     </div>
@@ -233,17 +288,20 @@
                             </div>
 
                             <div class="content">
-                            Sapphire Hotel is set between the V&A Waterfront and the Table Mountain, which is dubbed as a world heritage site in Cape Town.  This luxurious five-star hotel boasts modern conference facilities. Most rooms have both dining and living areas the fitness room is well-equipped. 
+                            Sapphire Hotel is set between the V&A Waterfront and the Table Mountain, which is dubbed as a world heritage site in Cape Town.  This luxurious five-star hotel boasts modern conference facilities. Most rooms have both dining and living areas the and the fitness room is very well-equipped. 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <?php 
-        if(isset($_POST['submit'])){ 
+        <?php 
+        if(isset($_POST['submit'])){
+    ?>
+            <script>
+                document.getElementById("bookinn").style.display = "none";
+            </script> 
+        <?php
             if ($user->make_booking()) { ?>
                 <?php $bookedID = $user->get_booking_id();
                 $_SESSION['bookedID'] = $bookedID; ?>
@@ -296,6 +354,8 @@
             }
         } 
     ?>
+    </section>
+    </section>
     <!-- jQuery JS 3.1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
@@ -306,21 +366,25 @@
                 $('.second').css('display', "none");
                 $('.third').css('display', "none");
                 $('.book').css('display', "none");
+                $('.bookinn').css('display', "none");
             } else if (sel.val() == "Summer Dune Hotel") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "block");
                 $('.third').css('display', "none");
                 $('.book').css('display', "none");
+                $('.bookinn').css('display', "none");
             } else if (sel.val() == "Sapphire Hotel") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "none");
                 $('.third').css('display', "block");
                 $('.book').css('display', "none");
+                $('.bookinn').css('display', "none");
             } else if (sel.val() == "") {
                 $('.first').css('display', "none");
                 $('.second').css('display', "none");
                 $('.third').css('display', "none");
                 $('.book').css('display', "none");
+                $('.bookinn').css('display', "none");
             }
         }); 
     </script>
