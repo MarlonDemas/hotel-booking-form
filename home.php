@@ -257,7 +257,7 @@
                         from <?php $user->get_check_in_date(); ?> until 
                         <?php $user->get_check_out_date(); ?>.
                     </strong><br>
-                    Unique ID: <strong><?php $user->display_booking_id(); ?></strong><br>
+                    Your Unique ID: <strong><?php $user->display_booking_id(); ?></strong><br>
                     Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
                     Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
                     Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>

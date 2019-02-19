@@ -202,6 +202,8 @@
             if($user_data['hotel_booked'] == 1){
                 return true;
             } else {
+                $sql = "DELETE FROM bookings WHERE bookingID = $bookedID";
+                $this->db->query($sql);
                 return false;
             }
         }
