@@ -29,6 +29,9 @@
     if(isset($_POST['confirm'])) {
         $bookedID = $_SESSION['bookedID'];
         $user->confirm_booking($bookedID);
+        header("location:confirmed.php");
+    } else if(isset($_POST['canceled'])) {
+        header("location:confirmed.php");
     }
 ?>
 
@@ -231,7 +234,6 @@
 
                             <div class="content">
                             Sapphire Hotel is set between the V&A Waterfront and the Table Mountain, which is dubbed as a world heritage site in Cape Town.  This luxurious five-star hotel boasts modern conference facilities. Most rooms have both dining and living areas the fitness room is well-equipped. 
-
                             </div>
                         </div>
                     </div>
@@ -251,11 +253,11 @@
                 <div class="box book">
                     <strong>
                         Hello <?php $user->get_fullname($userID); ?>
-                        You are booking the <?php $user->get_hotel(); ?>.
+                        You are booking the <?php $user->get_hotel(); ?><br>
+                        from <?php $user->get_check_in_date(); ?> until 
+                        <?php $user->get_check_out_date(); ?>.
                     </strong><br>
                     Unique ID: <strong><?php $user->display_booking_id(); ?></strong><br>
-                    Check-in date: <strong><?php $user->get_check_in_date(); ?></strong><br>
-                    Check-out date: <strong><?php $user->get_check_out_date(); ?></strong><br>
                     Number of nights: <strong><?php $user->get_num_days(); ?></strong><br>
                     Number of guests: <strong><?php $user->get_num_guests(); ?></strong><br>
                     Number of rooms: <strong><?php $user->get_num_rooms(); ?></strong><br>
@@ -267,7 +269,7 @@
                                 <button class="button is-link" name="confirm">Confirm Booking</button>
                             </div>
                             <div class="control">
-                                <button class="button">Cancel</button>
+                                <button class="button" name="canceled">Cancel</button>
                             </div>
                         </div>
                     </form>

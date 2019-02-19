@@ -192,4 +192,17 @@
             $sql = "UPDATE bookings SET hotel_booked = 1 WHERE bookingID = $bookedID";
             $this->db->query($sql);
         }
+
+        public function check_booking_confirmed($bookedID) {
+            $sql = "SELECT hotel_booked FROM bookings WHERE bookingID = $bookedID";
+
+            $result = $this->db->query($sql);
+            $user_data = mysqli_fetch_array($result);
+
+            if($user_data['hotel_booked'] == 1){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
