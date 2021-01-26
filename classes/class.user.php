@@ -8,7 +8,7 @@
             $this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
             if($this->db->connect_error) {
-                // echo "Error: Could not connect to database";
+                echo "Failed to connect to MySQL: " . $this -> db -> connect_error;
                 exit;
             }
         }
